@@ -1,0 +1,19 @@
+FROM node:12.18.2-alpine
+
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
+
+ARG REACT_APP_BACKEND_URI
+ENV REACT_APP_BACKEND_URI $REACT_APP_BACKEND_URI
+
+ARG REACT_APP_BACKEND_WS_URI
+ENV REACT_APP_BACKEND_WS_URI $REACT_APP_BACKEND_WS_URI
+
+COPY package.json ./
+COPY yarn.lock ./
+RUN yarn install
+
+COPY . ./
+
+CMD ["yarn", "start"]

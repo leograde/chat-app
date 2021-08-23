@@ -1,0 +1,1 @@
+export { splitLink } from "./splitLink";
