@@ -23,11 +23,12 @@ export function SubmitMessage({ onSubmitMessageContent }: SubmitMessageProps) {
         ref={inputRef}
         type="text"
         placeholder="Type a message"
+        aria-label="Message input"
         value={messageContent}
         onChange={(e) => setMessageContent(e.target.value)}
       />
 
-      <Button disabled={!messageContent.length} type="submit">
+      <Button disabled={!messageContent.length} type="submit" aria-label="Submit message">
         <FiSend />
       </Button>
     </Form>

@@ -19,12 +19,17 @@ export function Message({
   content,
   isSender,
 }: MessageProps) {
+  const createdAtString = new Date(createdAt).toLocaleTimeString();
+
   return (
-    <MessageRow isSender={isSender}>
+    <MessageRow
+      isSender={isSender}
+      aria-label={`user ${username} sent message ${content} at ${createdAtString}`}
+    >
       <MessageWrapper isSender={isSender}>
         <MessageSender>{username}</MessageSender>
         <MessageContent>{content}</MessageContent>
-        <MessageDate>{new Date(createdAt).toLocaleTimeString()}</MessageDate>
+        <MessageDate>{createdAtString}</MessageDate>
       </MessageWrapper>
     </MessageRow>
   );

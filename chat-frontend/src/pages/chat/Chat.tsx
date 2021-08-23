@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import {
   ChatWrapper,
   MessagesSection,
@@ -23,13 +24,14 @@ export function Chat({ username, messages, onSubmitMessage }: ChatProps) {
     <ChatWrapper>
       <MessagesSection>
         {messages.map((message) => (
-          <Message
-            key={message.id}
-            username={message.username}
-            createdAt={message.createdAt}
-            content={message.content}
-            isSender={message.username === username}
-          />
+          <Fragment key={message.id}>
+            <Message
+              username={message.username}
+              createdAt={message.createdAt}
+              content={message.content}
+              isSender={message.username === username}
+            />
+          </Fragment>
         ))}
       </MessagesSection>
 
